@@ -1,4 +1,4 @@
-a[href="#content"].skip-link {
+a[href='#content'].skip-link {
   @apply block fixed top-0 left-1/2 -translate-x-1/2 -translate-y-full z-9 px-8 py-4 bg-pageBG text-pageText text-12 leading-125 font-semibold uppercase;
 
   &:focus {
@@ -16,7 +16,7 @@ a[href="#content"].skip-link {
   &--outer {
     @apply relative;
   }
-  
+
   &--inner {
     @apply relative z-2 p-4 sm:p-16 bg-pageBG;
 
@@ -32,17 +32,17 @@ a[href="#content"].skip-link {
       @apply text-white delay-75;
     }
   }
-  
+
   &--content {
     @apply flex flex-col items-center relative z-3;
   }
 
   &--border {
     @apply absolute inset-x-0 bottom-0 z-2 border-t;
-    transition: opacity 0s .6s linear;
+    transition: opacity 0s 0.6s linear;
 
     .is-overlay:not(.has-bg) & {
-      transition-duration: .4s;
+      transition-duration: 0.4s;
       transition-delay: 0s;
     }
 
@@ -88,13 +88,13 @@ a[href="#content"].skip-link {
   &::before,
   &::after {
     @apply block relative w-full h-0 border-t;
-    content: "";
+    content: '';
     margin: 6px 0;
-    transition: opacity 0s .2s linear, transform .2s .2s ease-out;
+    transition: opacity 0s 0.2s linear, transform 0.2s 0.2s ease-out;
 
     .is-open & {
       @apply opacity-0;
-      transition: opacity 0s .2s linear, transform .2s ease-out;
+      transition: opacity 0s 0.2s linear, transform 0.2s ease-out;
     }
   }
 
@@ -112,7 +112,7 @@ a[href="#content"].skip-link {
 
   &--icon {
     @apply block relative w-full h-0 border-t;
-    transition: border 0s .2s linear;
+    transition: border 0s 0.2s linear;
 
     .is-open & {
       @apply border-transparent;
@@ -121,13 +121,13 @@ a[href="#content"].skip-link {
     &::before,
     &::after {
       @apply block absolute w-full h-0 border-t opacity-0;
-      content: "";
-      top: calc(50% - .5px);
-      transition: opacity 0s .2s, transform .2s ease-out;
+      content: '';
+      top: calc(50% - 0.5px);
+      transition: opacity 0s 0.2s, transform 0.2s ease-out;
 
       .is-open & {
         @apply opacity-100;
-        transition: transform .2s .2s ease-out;
+        transition: transform 0.2s 0.2s ease-out;
       }
     }
 
@@ -201,7 +201,7 @@ a[href="#content"].skip-link {
 
       &--backdrop {
         @apply fixed inset-0 z-4 bg-black bg-opacity-40 pointer-events-none opacity-0;
-        transition: opacity .15s linear;
+        transition: opacity 0.15s linear;
 
         &.is-active {
           @apply pointer-events-auto opacity-100;

@@ -6,9 +6,9 @@ export default {
         title: 'Recently edited',
         order: '_updatedAt desc',
         limit: 10,
-        types: ['page', 'product', 'collection']
+        types: ['page'],
       },
-      layout: { width: 'medium' }
+      layout: { width: 'medium' },
     },
     // {
     //   name: 'project-users',
@@ -19,8 +19,8 @@ export default {
     {
       name: 'project-details',
       layout: {
-        width: 'medium'
-      }
-    }
-  ]
+        width: 'medium',
+      },
+    },
+  ],
 }

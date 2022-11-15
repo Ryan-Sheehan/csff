@@ -17,28 +17,24 @@ export default {
       of: [{ type: 'gridSize' }],
       description:
         'Define the display size of this column for different screen widths',
-      validation: Rule => Rule.required().min(1)
+      validation: (Rule) => Rule.required().min(1),
     },
     {
       title: 'Content Blocks',
       name: 'blocks',
       type: 'array',
       description: 'The content that exists inside this column',
-      of: [
-        { type: 'freeform' },
-        { type: 'accordions' },
-        { type: 'productCard' }
-      ]
-    }
+      of: [{ type: 'freeform' }, { type: 'accordions' }],
+    },
   ],
   preview: {
     select: {
       sizes: 'sizes.0',
-      blocks: 'blocks'
+      blocks: 'blocks',
     },
     prepare({ sizes, blocks }) {
       const { width } = sizes
-      const types = blocks.map(block => block._type)
+      const types = blocks.map((block) => block._type)
 
       const title = getTypeTitles(types)
       const subtitle = ''
@@ -46,8 +42,8 @@ export default {
       return {
         title: title || 'Block',
         subtitle: subtitle || '',
-        media: <Avatar initials={width} size={1} />
+        media: <Avatar initials={width} size={1} />,
       }
-    }
-  }
+    },
+  },
 }

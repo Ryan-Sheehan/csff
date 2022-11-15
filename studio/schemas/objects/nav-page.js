@@ -12,20 +12,20 @@ export default {
       title: 'Title',
       name: 'title',
       type: 'string',
-      description: 'Display Text'
+      description: 'Display Text',
     },
     {
       title: 'Page',
       name: 'page',
       type: 'reference',
-      to: [{ type: 'page' }, { type: 'collection' }, { type: 'product' }]
-    }
+      to: [{ type: 'page' }],
+    },
   ],
   preview: {
     select: {
       title: 'title',
       pageType: 'page._type',
-      pageSlug: 'page.slug.current'
+      pageSlug: 'page.slug.current',
     },
     prepare({ title, pageType, pageSlug }) {
       const isStatic = getStaticRoute(pageType)
@@ -36,8 +36,8 @@ export default {
         subtitle:
           isStatic !== false
             ? `/${isStatic}`
-            : `/${isDynamic ? `${isDynamic}/` : ''}${pageSlug}`
+            : `/${isDynamic ? `${isDynamic}/` : ''}${pageSlug}`,
       }
-    }
-  }
+    },
+  },
 }

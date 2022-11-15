@@ -11,8 +11,8 @@ export default {
     {
       title: '',
       name: 'options',
-      options: { columns: 2 }
-    }
+      options: { columns: 2 },
+    },
   ],
   fields: [
     {
@@ -29,29 +29,23 @@ export default {
               title: 'Text',
               name: 'text',
               type: 'string',
-              validation: Rule => Rule.required()
-            }
+              validation: (Rule) => Rule.required(),
+            },
           ],
           preview: {
             select: {
-              text: 'text'
+              text: 'text',
             },
             prepare({ text }) {
               return {
-                title: text
+                title: text,
               }
-            }
-          }
+            },
+          },
         },
         customImage(),
-        {
-          title: 'Product',
-          name: 'product',
-          type: 'reference',
-          to: [{ type: 'product' }]
-        }
       ],
-      validation: Rule => Rule.min(1).required()
+      validation: (Rule) => Rule.min(1).required(),
     },
     {
       title: 'Speed',
@@ -59,35 +53,32 @@ export default {
       type: 'number',
       description: 'Pick a number between 0-1 (0.5 is the default)',
       initialValue: 0.5,
-      validation: Rule =>
-        Rule.min(0)
-          .max(1)
-          .precision(1)
+      validation: (Rule) => Rule.min(0).max(1).precision(1),
     },
     {
       title: 'Reverse direction?',
       name: 'reverse',
       type: 'boolean',
       initialValue: false,
-      fieldset: 'options'
+      fieldset: 'options',
     },
     {
       title: 'Pause on hover?',
       name: 'pausable',
       type: 'boolean',
       initialValue: false,
-      fieldset: 'options'
-    }
+      fieldset: 'options',
+    },
   ],
   preview: {
     select: {
-      text: 'items.0.text'
+      text: 'items.0.text',
     },
     prepare({ text }) {
       return {
         title: 'Marquee',
-        subtitle: text
+        subtitle: text,
       }
-    }
-  }
+    },
+  },
 }

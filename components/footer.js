@@ -19,8 +19,6 @@ const Footer = ({ data = {} }) => {
               <Menu items={block.menu.items} className="menu-footer" />
             )}
 
-            {block.newsletter && <Newsletter data={block.newsletter} />}
-
             {block.social && (
               <div className="menu-social">
                 {block.social.map((link, key) => {
@@ -31,7 +29,7 @@ const Footer = ({ data = {} }) => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Icon name={link.icon} />
+                      {link.icon}
                     </a>
                   )
                 })}
@@ -39,12 +37,14 @@ const Footer = ({ data = {} }) => {
             )}
 
             {/* Put our extras in the last block */}
-            {key === 3 && (
+            {key === 0 && (
               <div className="footer--extras">
                 <ThemeSwitch />
 
                 <div className="footer--disclaimer">
-                  <p>&copy; {new Date().getFullYear()}. All Rights Reserved.</p>
+                  <p>
+                    &copy; {new Date().getFullYear()}. Knickerbocker + LLanguage
+                  </p>
                 </div>
               </div>
             )}

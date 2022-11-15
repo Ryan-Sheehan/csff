@@ -6,7 +6,7 @@ import sanityClient from 'part:@sanity/base/client'
 import defaultResolve, {
   PublishAction,
   DiscardChangesAction,
-  DeleteAction
+  DeleteAction,
 } from 'part:@sanity/base/document-actions'
 
 import { useToast } from '@sanity/ui'
@@ -15,19 +15,19 @@ import { Eye, Storefront } from 'phosphor-react'
 
 const singletons = [
   'generalSettings',
-  'cookieSettings',
+  'aboutSettings',
   'promoSettings',
   'headerSettings',
   'footerSettings',
   'shopSettings',
-  'seoSettings'
+  'seoSettings',
 ]
 
 const editAndDelete = ['product', 'productVariant']
 
-const previews = ['page', 'product', 'collection']
+const previews = ['page']
 
-const PreviewAction = props => {
+const PreviewAction = (props) => {
   const slug = props.draft
     ? props.draft.slug?.current
     : props.published?.slug?.current
@@ -45,14 +45,15 @@ const PreviewAction = props => {
         window.location.hostname === 'localhost' ? localURL : remoteURL
 
       window.open(
-        `${frontendURL}/api/preview?token=HULL&type=${props.type}&slug=${slug ||
-          ''}`
+        `${frontendURL}/api/preview?token=HULL&type=${props.type}&slug=${
+          slug || ''
+        }`
       )
-    }
+    },
   }
 }
 
-const ShopifyAction = props => {
+const ShopifyAction = (props) => {
   const [isSyncing, setIsSyncing] = useState(false)
 
   const toast = useToast()
@@ -74,34 +75,34 @@ const ShopifyAction = props => {
       axios({
         url: `${frontendURL}/api/shopify/product-images`,
         method: 'POST',
-        data: props.published
+        data: props.published,
       })
-        .then(res => res.data)
-        .then(res => {
+        .then((res) => res.data)
+        .then((res) => {
           setIsSyncing(false)
 
           if (res.error) {
             toast.push({
               status: 'error',
-              description: res.error
+              description: res.error,
             })
           } else {
             toast.push({
               status: 'success',
-              description: 'Photos sync’d successfully!'
+              description: 'Photos sync’d successfully!',
             })
           }
         })
-        .catch(err => {
+        .catch((err) => {
           setIsSyncing(false)
           console.log(err)
 
           toast.push({
             status: 'error',
-            description: 'There was an error.'
+            description: 'There was an error.',
           })
         })
-    }
+    },
   }
 }
 
@@ -115,7 +116,7 @@ export default function resolveDocumentActions(props) {
     return [
       PublishAction,
       DiscardChangesAction,
-      ...(canPreview ? [PreviewAction] : [])
+      ...(canPreview ? [PreviewAction] : []),
     ]
   }
 
@@ -125,7 +126,7 @@ export default function resolveDocumentActions(props) {
       DiscardChangesAction,
       DeleteAction,
       ...(canPreview ? [PreviewAction] : []),
-      ...(isProduct ? [ShopifyAction] : [])
+      ...(isProduct ? [ShopifyAction] : []),
     ]
   }
 

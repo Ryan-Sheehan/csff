@@ -1,12 +1,12 @@
 .footer {
   @apply relative overflow-hidden;
-  
+
   &--grid {
-    @apply grid sm:grid-cols-2 lg:grid-cols-4 gap-1 bg-pageText;
+    @apply grid sm:grid-cols-2 lg:grid-cols-4 bg-pageText;
   }
 
   &--block {
-    @apply flex flex-col p-32 bg-pageBG text-center lg:text-left;
+    @apply flex flex-col items-center justify-center p-32 bg-pageBG text-center lg:text-left;
   }
 
   .form {
@@ -14,18 +14,18 @@
   }
 
   .menu-footer {
-    @apply flex flex-col lg:mb-32;
+    @apply flex flex-col;
 
     a {
-      @apply inline-block py-8 text-16 hover:opacity-40;
+      @apply inline-block py-8 hover:opacity-40;
     }
   }
 
   .menu-social {
-    @apply inline-flex flex-wrap my-16 mx-auto lg:mt-0 lg:mx-0;
+    @apply flex-wrap mx-auto lg:mt-0 lg:mx-0;
 
     a {
-      @apply block w-36 h-36 hover:opacity-40;
+      @apply block h-36 text-30 hover:opacity-40 after:content-['↗'] after:pl-10;
 
       svg {
         @apply block w-full h-full;

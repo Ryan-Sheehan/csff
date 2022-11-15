@@ -14,7 +14,7 @@
   }
 
   body {
-    @apply bg-pageBG text-pageText font-sans leading-100;
+    @apply bg-pageBG text-pageText font-diatype leading-100;
   }
 
   p {
@@ -76,7 +76,7 @@
   hr {
     @apply my-60 mx-0 border-0 h-1 bg-pageText;
   }
-  
+
   ::-moz-selection {
     @apply bg-pageText text-pageBG;
   }
@@ -107,7 +107,7 @@ details {
     .is-inverted & {
       outline-color: var(--pageBG);
     }
-    
+
     body:not(.is-tabbing) & {
       outline: none;
     }
@@ -127,12 +127,12 @@ ul {
     &:not(:last-child) {
       @apply mb-6;
     }
-    
+
     li {
       @apply mb-1;
-      
+
       &::before {
-        content: "+";
+        content: '+';
         @apply inline-block relative -ml-4 w-4;
       }
     }
@@ -154,11 +154,7 @@ h1,
   }
 
   .hero & {
-    font-size: clamp(
-      4rem,
-      calc(1.5rem + 3.5vw),
-      15rem
-    )
+    font-size: clamp(4rem, calc(1.5rem + 3.5vw), 15rem);
   }
 }
 

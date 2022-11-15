@@ -6,10 +6,10 @@ import {
   ShoppingCart,
   NavigationArrow,
   AnchorSimple,
-  Cookie,
   FlagBanner,
   GlobeSimple,
-  Shuffle
+  Shuffle,
+  Question,
 } from 'phosphor-react'
 
 export const settingsMenu = S.listItem()
@@ -28,21 +28,7 @@ export const settingsMenu = S.listItem()
           )
           .icon(Gear),
         S.divider(),
-        S.listItem()
-          .title('Colors')
-          .child(S.documentTypeList('solidColor').title('Colors'))
-          .icon(PaintBucket),
-        S.divider(),
-        S.listItem()
-          .title('Shop')
-          .child(
-            S.editor()
-              .id('shopSettings')
-              .schemaType('shopSettings')
-              .documentId('shopSettings')
-          )
-          .icon(ShoppingCart),
-        S.divider(),
+
         S.listItem()
           .title('Header')
           .child(
@@ -63,14 +49,14 @@ export const settingsMenu = S.listItem()
           .icon(AnchorSimple),
         S.divider(),
         S.listItem()
-          .title('Cookie Consent')
+          .title('About Popup')
           .child(
             S.editor()
-              .id('cookieSettings')
-              .schemaType('cookieSettings')
-              .documentId('cookieSettings')
+              .id('aboutSettings')
+              .schemaType('aboutSettings')
+              .documentId('aboutSettings')
           )
-          .icon(Cookie),
+          .icon(Question),
         S.listItem()
           .title('Promo Bar')
           .child(
@@ -93,7 +79,7 @@ export const settingsMenu = S.listItem()
         S.listItem()
           .title('Redirects')
           .child(S.documentTypeList('redirect').title('Redirects'))
-          .icon(Shuffle)
+          .icon(Shuffle),
       ])
   )
   .icon(Gear)

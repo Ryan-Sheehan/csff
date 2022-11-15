@@ -112,6 +112,7 @@ export default HeadSEO
 
 // replace template tags with values
 function replaceTemplateTags(string, templateTags = []) {
+  if (!string || !templateTags) return ''
   let newString = string
 
   templateTags.map((v) => {

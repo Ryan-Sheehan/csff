@@ -6,9 +6,9 @@ import { useHasMounted } from '@lib/helpers'
 import Swatch from '@components/swatch'
 
 const themes = [
-  { title: 'Light Mode', name: 'light', color: { hex: '#f4f4f0' } },
-  { title: 'Dark Mode', name: 'dark', color: { hex: '#000000' } },
-  { title: 'Metal Mode', name: 'metal', color: { hex: '#FB1B15' } },
+  { name: 'light', color: { hex: '#f4f4f0' } },
+  { name: 'dark', color: { hex: '#000000' } },
+  { name: 'metal', color: { hex: 'var(--orange)' } },
 ]
 
 const ThemeSwitch = () => {
@@ -35,7 +35,6 @@ const ThemeSwitch = () => {
         aria-label={`Change theme to ${nextTheme.title}`}
       >
         <Swatch color={currentTheme.color} />
-        <div className="theme-switch--label">{currentTheme.title}</div>
       </button>
     </div>
   )

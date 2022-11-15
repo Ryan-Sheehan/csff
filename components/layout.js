@@ -45,7 +45,7 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
       setLockHeight(hasChin)
     }
   }, [windowHeight, hasChin])
-
+  console.log(site)
   return (
     <>
       <HeadSEO site={site} page={page} schema={schema} />
@@ -71,7 +71,7 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
         variants={pageTransitionAnim}
         style={headerHeight ? { '--headerHeight': `${headerHeight}px` } : null}
       >
-        <CookieBar data={site.cookieConsent} />
+        <CookieBar data={site.aboutPopup} />
         <Header
           data={site.header}
           isTransparent={page.hasTransparentHeader}

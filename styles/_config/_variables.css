@@ -3,6 +3,8 @@
   --black: #000000;
   --white: #ffffff;
 
+  --orange: #cc491a;
+
   --black-hsl: 0, 0%, 0%;
   --white-hsl: 0, 0%, 100%;
 
@@ -22,8 +24,8 @@
 }
 
 [data-theme='metal'] {
-  --pageBG: #000000;
-  --pageText: #FB1B15;
+  --pageBG: var(--orange);
+  --pageText: #000000;
 
   --pageBG-hsl: 0, 0%, 0%;
   --pageText-hsl: 2, 92%, 53%;

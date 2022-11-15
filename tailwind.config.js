@@ -48,6 +48,7 @@ module.exports = {
       current: 'currentColor',
       black: '#000000',
       white: '#FFFFFF',
+      orange: 'var(--orange)',
       pageBG: 'var(--pageBG)',
       pageText: 'var(--pageText)',
     },
@@ -88,6 +89,7 @@ module.exports = {
       }, {}),
     extend: {
       fontFamily: {
+        diatype: ['Diatype', 'sans-serif'],
         inherit: 'inherit',
       },
       maxWidth: {

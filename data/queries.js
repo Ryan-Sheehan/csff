@@ -1,10 +1,3 @@
-import { sortTypes } from '../studio/schemas/objects/shop-sort'
-
-// Create our sorting fallback titles from Sanity
-const sortFallbacks = sortTypes
-  .map((type) => `type == "${type.value}" => "${type.title}"`)
-  .join(',')
-
 // Construct our "home" and "error" page GROQ
 export const homeID = `*[_type=="generalSettings"][0].home->_id`
 export const shopID = `*[_type=="generalSettings"][0].shop->_id`
@@ -146,11 +139,6 @@ export const blocks = `
         ${ptContent}
       }
     }
-  },
-  _type == 'productCard' => {
-    _type,
-    _key,
-    product->${product}
   }
 `
 
@@ -207,11 +195,6 @@ export const modules = `
         "photo": {
           ${imageMeta}
         }
-      },
-      _type == 'product' => {
-        _type,
-        _id,
-        "product": *[_type == "product" && _id == ^ ._ref][0]${product}
       }
     },
     speed,
@@ -224,43 +207,6 @@ export const modules = `
     photo{
       ${imageMeta}
     }
-  },
-  _type == 'productHero' => {
-    _type,
-    _key,
-  },
-  _type == 'collectionGrid' => {
-    _type,
-    _key,
-    "title": ^.title,
-    "paginationLimit": *[_type == "shopSettings"][0].paginationLimit,
-    "filter": *[_type == "shopSettings"][0].filter{
-      isActive,
-      groups[]{
-        "id": _key,
-        title,
-        "slug": slug.current,
-        display,
-        options[]->{
-          type,
-          title,
-          "slug": slug.current,
-          "color": color->color
-        }
-      }
-    },
-    "sort": *[_type == "shopSettings"][0].sort{
-      isActive,
-      options[]{
-        "slug": type,
-        "title": coalesce(title, select(
-          ${sortFallbacks}
-        ))
-      }
-    },
-    "noFilterResults": *[_type == "shopSettings"][0].noFilterResults[]{
-      ${ptContent}
-    },
   }
 `
 
@@ -277,10 +223,9 @@ export const site = `
       "slug": slug.current,
       "count": count(products)
     },
-    "cookieConsent": *[_type == "cookieSettings"][0]{
+    "aboutPopup": *[_type == "aboutSettings"][0]{
       enabled,
-      message,
-      "link": link->{"type": _type, "slug": slug.current}
+      message
     },
     "header": *[_type == "headerSettings"][0]{
       "promo": *[_type == "promoSettings"][0]{

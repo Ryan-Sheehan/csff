@@ -16,22 +16,10 @@ import {
 } from '@lib/context'
 
 import Cart from '@components/cart'
+import { signature } from '@lib/signature'
 
-// Console Credits
 if (isBrowser) {
-  console.groupCollapsed(
-    '%c💀 Site Credits',
-    'display:block;padding:0.125em 1em;font-family:courier;font-size:14px;font-weight:bold;line-height:2;text-transform:uppercase;background:black;color:white;'
-  )
-  console.log(
-    '%cDesign by Nick DiMatteo \n– https://nickdimatteo.com',
-    'display:block;font-family:courier;font-size:12px;font-weight:bold;line-height:1;color:black;'
-  )
-  console.log(
-    '%cDevelopment by Nick DiMatteo \n– https://nickdimatteo.com',
-    'display:block;font-family:courier;font-size:12px;font-weight:bold;line-height:1;color:black;'
-  )
-  console.groupEnd()
+  signature
 }
 
 const Site = ({ Component, pageProps, router }) => {
@@ -98,8 +86,6 @@ const Site = ({ Component, pageProps, router }) => {
       >
         <Component key={pageID} {...pageProps} />
       </AnimatePresence>
-
-      <Cart data={{ ...data?.site }} />
     </LazyMotion>
   )
 }
