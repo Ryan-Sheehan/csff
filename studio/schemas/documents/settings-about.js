@@ -11,7 +11,7 @@ export default {
     {
       title: 'Message',
       name: 'message',
-      type: 'simplePortableText',
+      type: 'complexPortableText',
       rows: 2,
       description: 'About',
       hidden: ({ parent }) => !parent.enabled,

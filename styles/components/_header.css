@@ -18,7 +18,7 @@ a[href='#content'].skip-link {
   }
 
   &--inner {
-    @apply relative z-2 p-4 sm:p-16 bg-pageBG;
+    @apply relative z-2 p-12 sm:p-16 bg-pageBG;
 
     .is-overlay & {
       @apply bg-transparent transition-colors duration-300;
@@ -62,10 +62,10 @@ a[href='#content'].skip-link {
   @apply flex flex-col relative z-1;
 
   &--link {
-    @apply clean-btn block p-8 bg-transparent;
+    @apply clean-btn block p-0 bg-transparent;
 
     svg {
-      @apply block fill-current w-auto h-48;
+      @apply block fill-current w-auto h-56;
     }
   }
 }
@@ -141,20 +141,6 @@ a[href='#content'].skip-link {
       .is-open & {
         transform: rotate(-45deg);
       }
-    }
-  }
-}
-
-.cart-toggle {
-  @apply clean-btn flex items-center relative bg-transparent -mr-8 p-8 font-semibold uppercase;
-  font: inherit;
-
-  &--count {
-    @apply flex flex-col justify-center relative w-32 h-32 ml-8 rounded-full bg-transparent border border-current text-current text-14 font-bold leading-160;
-
-    &.is-active {
-      @apply border-pageText bg-pageText text-pageBG;
-      animation: pulse 2s infinite;
     }
   }
 }

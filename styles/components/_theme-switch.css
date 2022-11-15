@@ -2,7 +2,7 @@
   @apply inline-block my-16;
 
   &--toggle {
-    @apply clean-btn flex items-center p-8 bg-transparent border rounded-full;
+    @apply clean-btn flex items-center p-8 bg-transparent border;
   }
 
   &--label {
@@ -11,7 +11,7 @@
 
   .swatch {
     @apply border;
-    
+
     &::before {
       @apply opacity-0;
     }
@@ -19,20 +19,20 @@
 }
 
 .swatch {
-  @apply relative p-0 block rounded-full w-20 h-20;
+  @apply relative p-0 block  w-20 h-20;
   background-color: var(--swatchColor);
-    
+
   /* ring */
   &::before {
-    @apply absolute inset-0 rounded-full opacity-10 border;
+    @apply absolute inset-0  opacity-10 border;
     border-color: var(--swatchBorder);
-    content: "";
+    content: '';
   }
 
   /* active */
   &::after {
-    @apply absolute inset-[-3px] rounded-full border border-transparent opacity-0 transition-opacity duration-200;
-    content: "";
+    @apply absolute inset-[-3px]  border border-transparent opacity-0 transition-opacity duration-200;
+    content: '';
 
     .is-active & {
       @apply border-pageText opacity-100;
@@ -48,7 +48,18 @@
 
     .is-soldout & {
       @apply -inset-1 opacity-100 border-transparent;
-      background: linear-gradient(45deg,transparent calc(50% - 1px),var(--pageText),transparent calc(50% + 1px)), linear-gradient(-45deg,transparent calc(50% - 1px),var(--pageText),transparent calc(50% + 1px));
+      background: linear-gradient(
+          45deg,
+          transparent calc(50% - 1px),
+          var(--pageText),
+          transparent calc(50% + 1px)
+        ),
+        linear-gradient(
+          -45deg,
+          transparent calc(50% - 1px),
+          var(--pageText),
+          transparent calc(50% + 1px)
+        );
     }
   }
 }

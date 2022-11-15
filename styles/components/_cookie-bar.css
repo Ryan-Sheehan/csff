@@ -1,8 +1,11 @@
 .cookie-bar {
   @apply fixed bottom-0 right-0 left-0 z-9 p-16 w-full;
 
+  &--logo {
+    @apply w-200 fill-pageText;
+  }
   &--content {
-    @apply grid gap-24 sm:flex items-start justify-center p-24 pb-16 sm:p-24 rounded-xl bg-pageText text-pageBG border;
+    @apply grid gap-24 sm:flex items-start justify-center p-24 pb-16 sm:p-24 bg-orange text-black border;
   }
 
   &--message {
@@ -18,7 +21,7 @@
   }
 
   &--actions {
-    @apply grid sm:items-center gap-8 flex-shrink-0;
+    @apply absolute -top-64 left-1/2 -translate-x-1/2 z-10;
 
     button {
       @apply order-first sm:order-none;
