@@ -2,7 +2,7 @@
   @apply fixed bottom-0 right-0 left-0 z-9 p-0 w-full;
 
   &--logo {
-    @apply flex-1 flex justify-center fill-pageText;
+    @apply flex-1 flex md:justify-center fill-pageText;
     svg {
       @apply w-240 md:w-120;
     }

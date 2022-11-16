@@ -61,7 +61,7 @@ const mobileButtonAnim = {
   },
   show: {
     opacity: 1,
-    top: '30%',
+    top: '40%',
     bottom: 'auto',
     transition: {
       duration: 0.6,
