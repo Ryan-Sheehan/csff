@@ -9,7 +9,8 @@
   margin: 0;
 }
 
-html, body {
+html,
+body {
   min-height: 100%;
 }
 
@@ -23,7 +24,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
@@ -31,12 +36,11 @@ img, picture, video, canvas, svg {
 svg:not([fill]) {
   fill: currentColor;
 }
- 
-svg:not(:root) {
-  overflow: hidden;
-}
 
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
   color: inherit;
 }
@@ -48,12 +52,11 @@ textarea {
 }
 
 button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
+[type='button'],
+[type='reset'],
+[type='submit'] {
   -webkit-appearance: button;
 }
-
 
 ::-moz-selection {
   text-shadow: none;
@@ -75,7 +78,7 @@ button,
 :-moz-ui-invalid {
   box-shadow: none;
 }
- 
+
 ::-webkit-inner-spin-button,
 ::-webkit-outer-spin-button {
   height: auto;
@@ -95,7 +98,6 @@ button,
   font: inherit;
 }
 
-
 a,
 area,
 button,
@@ -107,8 +109,8 @@ textarea,
 [tabindex] {
   -ms-touch-action: manipulation;
 }
- 
-[aria-busy="true"] {
+
+[aria-busy='true'] {
   cursor: progress;
 }
 
@@ -116,21 +118,21 @@ textarea,
   cursor: pointer;
 }
 
-[aria-disabled="true"],
+[aria-disabled='true'],
 [disabled] {
   cursor: not-allowed;
 }
 
-[aria-hidden="false"][hidden] {
+[aria-hidden='false'][hidden] {
   display: initial;
 }
 
-[aria-hidden="false"][hidden]:not(:focus) {
+[aria-hidden='false'][hidden]:not(:focus) {
   clip: rect(0, 0, 0, 0);
   position: absolute;
 }
 
-
-#root, #__next {
+#root,
+#__next {
   isolation: isolate;
 }

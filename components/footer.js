@@ -40,7 +40,7 @@ const Footer = ({ data = {} }) => {
               {/* Put our extras in the last block */}
               {key === 0 && (
                 <div className="footer--extras">
-                  <ThemeSwitch />
+                  {/* <ThemeSwitch /> */}
 
                   <div className="footer--disclaimer">
                     <p>

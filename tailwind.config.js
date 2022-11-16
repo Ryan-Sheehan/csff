@@ -92,6 +92,9 @@ module.exports = {
         diatype: ['Diatype', 'sans-serif'],
         inherit: 'inherit',
       },
+      zIndex: {
+        100: '100',
+      },
       maxWidth: {
         xs: '20rem',
         sm: '30rem',

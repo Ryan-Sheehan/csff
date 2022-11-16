@@ -1,20 +1,28 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
 import BlockContent from '@components/block-content'
 import VideoLoop from '@components/vimeo-loop'
 import Photo from '@components/photo'
+import { useInView, m } from 'framer-motion'
 
 const Hero = ({ data = {} }) => {
   const { content, bgType, photos, video } = data
 
+  const ref = useRef()
+  const inView = useInView(ref)
+
   return (
-    <section className="hero">
+    <section ref={ref} className="hero">
       {content && (
-        <div className="hero--overlay">
+        <m.div
+          animate={{ rotate: inView ? 0 : 10 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="hero--overlay"
+        >
           <div className="hero--content">
             <BlockContent blocks={content} />
           </div>
-        </div>
+        </m.div>
       )}
 
       {bgType === 'video' && (

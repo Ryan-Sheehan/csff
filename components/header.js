@@ -74,9 +74,22 @@ const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
         })}
       >
         <div ref={headerRef} className="header--outer">
-          <div className="header--inner">
+          <m.div
+            transition={{ duration: 0.8, delay: 3 }}
+            initial={{
+              height: 'calc(100vh + 1px)',
+              background: 'var(--orange)',
+            }}
+            animate={{ height: 'auto', background: 'var(--pageBG)' }}
+            className="header--inner"
+          >
             <div className="header--content">
-              <div className="logo">
+              <m.div
+                transition={{ duration: 0.8, delay: 3 }}
+                initial={{ scale: 2 }}
+                animate={{ scale: 1 }}
+                className="logo"
+              >
                 {router.pathname === '/' ? (
                   <button
                     className="logo--link"
@@ -92,7 +105,7 @@ const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
                     </a>
                   </Link>
                 )}
-              </div>
+              </m.div>
 
               <nav className="main-navigation" role="navigation">
                 {/* Mobile Header Menu */}
@@ -192,7 +205,7 @@ const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
                 'is-hidden': meganav.isOpen,
               })}
             />
-          </div>
+          </m.div>
 
           <MegaNavigation
             items={[
@@ -208,24 +221,6 @@ const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
 
       <span ref={observe} className="header--observer" />
     </>
-  )
-}
-
-const CartToggle = () => {
-  const toggleCart = useToggleCart()
-  const cartCount = useCartCount()
-
-  return (
-    <button className="cart-toggle" onClick={() => toggleCart()}>
-      Cart
-      <span
-        className={cx('cart-toggle--count', {
-          'is-active': cartCount > 0,
-        })}
-      >
-        {cartCount}
-      </span>
-    </button>
   )
 }
 

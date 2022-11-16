@@ -28,8 +28,14 @@ const barAnim = {
   },
 }
 const buttonAnim = {
+  initial: {
+    opacity: 0,
+    top: 'auto',
+    bottom: '3.2rem',
+  },
   show: {
-    top: '3.2rem',
+    opacity: 1,
+    top: '6.4rem',
     bottom: 'auto',
     transition: {
       duration: 0.6,
@@ -38,6 +44,7 @@ const buttonAnim = {
     },
   },
   hide: {
+    opacity: 1,
     top: 'auto',
     bottom: '3.2rem',
     transition: {
@@ -47,8 +54,14 @@ const buttonAnim = {
   },
 }
 const mobileButtonAnim = {
+  initial: {
+    opacity: 0,
+    top: 'auto',
+    bottom: '3.2rem',
+  },
   show: {
-    top: '12rem',
+    opacity: 1,
+    top: '50%',
     bottom: 'auto',
     transition: {
       duration: 0.6,
@@ -57,6 +70,7 @@ const mobileButtonAnim = {
     },
   },
   hide: {
+    opacity: 1,
     top: 'auto',
     bottom: '3.2rem',
     transition: {
@@ -69,6 +83,12 @@ const AboutPopup = React.memo(({ data = {} }) => {
   const { enabled, message, link } = data
   const [open, setOpen] = useState(false)
   const togglePopup = () => setOpen(!open)
+  const [showActions, setShowActions] = useState(false)
+  useEffect(() => {
+    setTimeout(() => {
+      setShowActions(true)
+    }, 3000)
+  }, [])
 
   const isSmall = useMediaQuery({
     query: '(max-width: 768px)',
@@ -117,28 +137,36 @@ const AboutPopup = React.memo(({ data = {} }) => {
           </div>
         </m.div>
       </FocusTrap>
-      <m.div
-        className="cookie-bar--actions"
-        initial="hide"
-        animate={open ? 'show' : 'hide'}
-        exit="hide"
-        variants={isSmall ? mobileButtonAnim : buttonAnim}
-      >
-        {link && (
-          <CustomLink
-            className="btn is-text"
-            link={{ ...{ page: link }, ...{ title: 'Learn More' } }}
-          />
+      <AnimatePresence>
+        {showActions && (
+          <m.div
+            key="actions"
+            className="cookie-bar--actions"
+            initial="initial"
+            animate={open ? 'show' : 'hide'}
+            exit="exit"
+            variants={isSmall ? mobileButtonAnim : buttonAnim}
+          >
+            {link && (
+              <CustomLink
+                className="btn is-text"
+                link={{ ...{ page: link }, ...{ title: 'Learn More' } }}
+              />
+            )}
+            <button
+              onClick={() => togglePopup()}
+              className="btn is-primary w-120 "
+            >
+              <Icon
+                name={open ? 'Close' : 'Question'}
+                id="show-about"
+                viewBox="0 0 40 50"
+              />
+              <span>{open ? 'Close' : 'About'}</span>
+            </button>
+          </m.div>
         )}
-        <button onClick={() => togglePopup()} className="btn is-primary w-120 ">
-          <Icon
-            name={open ? 'Close' : 'Question'}
-            id="show-about"
-            viewBox="0 0 40 50"
-          />
-          <span>{open ? 'Close' : 'About'}</span>
-        </button>
-      </m.div>
+      </AnimatePresence>
     </>
   )
 })
