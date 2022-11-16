@@ -35,7 +35,7 @@ const buttonAnim = {
   },
   show: {
     opacity: 1,
-    top: '6.4rem',
+    top: '3.2rem',
     bottom: 'auto',
     transition: {
       duration: 0.6,
@@ -61,7 +61,7 @@ const mobileButtonAnim = {
   },
   show: {
     opacity: 1,
-    top: '50%',
+    top: '35%',
     bottom: 'auto',
     transition: {
       duration: 0.6,

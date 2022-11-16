@@ -1,15 +1,18 @@
 .cookie-bar {
-  @apply fixed bottom-0 right-0 left-0 z-9 p-16 w-full;
+  @apply fixed bottom-0 right-0 left-0 z-9 p-0 w-full;
 
   &--logo {
-    @apply max-w-xs md:w-240 fill-pageText;
+    @apply flex-1 flex justify-center fill-pageText;
+    svg {
+      @apply w-240 md:w-120;
+    }
   }
   &--content {
     @apply grid gap-48 sm:flex items-start justify-center items-center p-24 pb-16 sm:p-24 bg-orange text-black border;
   }
 
   &--message {
-    @apply flex-1 sm:pr-32 text-center sm:text-left;
+    @apply flex-1 sm:pr-32 py-16 sm:text-left;
 
     p {
       @apply text-18 md:text-18 leading-120;
