@@ -8,6 +8,7 @@ import BlockContent from '@components/block-content'
 
 import CustomLink from '@components/link'
 import Icon from './icon'
+import { useMediaQuery } from 'react-responsive'
 
 const barAnim = {
   show: {
@@ -26,11 +27,52 @@ const barAnim = {
     },
   },
 }
-
+const buttonAnim = {
+  show: {
+    top: '3.2rem',
+    bottom: 'auto',
+    transition: {
+      duration: 0.6,
+      delay: 0,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+  hide: {
+    top: 'auto',
+    bottom: '3.2rem',
+    transition: {
+      duration: 1.2,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+}
+const mobileButtonAnim = {
+  show: {
+    top: '12rem',
+    bottom: 'auto',
+    transition: {
+      duration: 0.6,
+      delay: 0,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+  hide: {
+    top: 'auto',
+    bottom: '3.2rem',
+    transition: {
+      duration: 1.2,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+}
 const AboutPopup = React.memo(({ data = {} }) => {
   const { enabled, message, link } = data
   const [open, setOpen] = useState(false)
   const togglePopup = () => setOpen(!open)
+
+  const isSmall = useMediaQuery({
+    query: '(max-width: 768px)',
+  })
 
   if (!enabled) return null
 
@@ -75,25 +117,28 @@ const AboutPopup = React.memo(({ data = {} }) => {
           </div>
         </m.div>
       </FocusTrap>
-      <div className="cookie-bar--actions">
+      <m.div
+        className="cookie-bar--actions"
+        initial="hide"
+        animate={open ? 'show' : 'hide'}
+        exit="hide"
+        variants={isSmall ? mobileButtonAnim : buttonAnim}
+      >
         {link && (
           <CustomLink
             className="btn is-text"
             link={{ ...{ page: link }, ...{ title: 'Learn More' } }}
           />
         )}
-        <button
-          onClick={() => togglePopup()}
-          className="btn is-primary flex justify-center"
-        >
+        <button onClick={() => togglePopup()} className="btn is-primary w-120 ">
           <Icon
             name={open ? 'Close' : 'Question'}
-            id="question"
+            id="show-about"
             viewBox="0 0 40 50"
           />
           <span>{open ? 'Close' : 'About'}</span>
         </button>
-      </div>
+      </m.div>
     </>
   )
 })

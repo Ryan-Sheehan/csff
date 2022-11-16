@@ -2,7 +2,7 @@
 
 @layer base {
   html {
-    @apply bg-pageText text-[10px];
+    @apply bg-pageText text-[8px];
   }
 
   html,
@@ -32,12 +32,12 @@
   /* Headlines */
   h1,
   .is-h1 {
-    @apply m-0 text-48 font-normal leading-125;
+    @apply m-0 text-56 font-normal leading-125;
   }
 
   h2,
   .is-h2 {
-    @apply m-0 text-36 font-normal leading-125;
+    @apply m-0 text-48 font-normal leading-125;
   }
 
   h3,
