@@ -7,6 +7,7 @@ import { useHasMounted } from '@lib/helpers'
 import BlockContent from '@components/block-content'
 
 import CustomLink from '@components/link'
+import Icon from './icon'
 
 const barAnim = {
   show: {
@@ -72,19 +73,27 @@ const AboutPopup = React.memo(({ data = {} }) => {
               <BlockContent blocks={message} />
             </div>
           </div>
-          <div className="cookie-bar--actions">
-            {link && (
-              <CustomLink
-                className="btn is-text"
-                link={{ ...{ page: link }, ...{ title: 'Learn More' } }}
-              />
-            )}
-            <button onClick={() => togglePopup()} className="btn is-primary">
-              {open ? 'Close' : 'About'}
-            </button>
-          </div>
         </m.div>
       </FocusTrap>
+      <div className="cookie-bar--actions">
+        {link && (
+          <CustomLink
+            className="btn is-text"
+            link={{ ...{ page: link }, ...{ title: 'Learn More' } }}
+          />
+        )}
+        <button
+          onClick={() => togglePopup()}
+          className="btn is-primary flex justify-center"
+        >
+          <Icon
+            name={open ? 'Close' : 'Question'}
+            id="question"
+            viewBox="0 0 40 50"
+          />
+          <span>{open ? 'Close' : 'About'}</span>
+        </button>
+      </div>
     </>
   )
 })

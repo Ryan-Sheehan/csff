@@ -12,6 +12,7 @@ const hiddenDocTypes = (listItem) =>
     'generalSettings',
     'headerSettings',
     'footerSettings',
+    'aboutSettings',
     'seoSettings',
 
     'menu',

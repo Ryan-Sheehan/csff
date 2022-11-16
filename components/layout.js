@@ -45,7 +45,6 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
       setLockHeight(hasChin)
     }
   }, [windowHeight, hasChin])
-  console.log(site)
   return (
     <>
       <HeadSEO site={site} page={page} schema={schema} />

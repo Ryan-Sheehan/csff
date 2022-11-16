@@ -42,18 +42,7 @@
 .video-loop {
   @apply absolute inset-0 bg-black;
 
-  [data-theme='metal'] & {
-    &::after {
-      @apply absolute inset-0 bg-pageText mix-blend-multiply;
-      content: '';
-    }
-  }
-
   iframe {
     @apply absolute top-1/2 left-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-screen min-h-screen;
-
-    [data-theme='metal'] & {
-      filter: invert(1) blur(0px) grayscale(1);
-    }
   }
 }

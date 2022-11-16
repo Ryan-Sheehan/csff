@@ -21,7 +21,7 @@
   }
 
   &--actions {
-    @apply absolute -top-64 left-1/2 -translate-x-1/2 z-10;
+    @apply fixed top-32 right-64 z-10;
 
     button {
       @apply order-first sm:order-none;
