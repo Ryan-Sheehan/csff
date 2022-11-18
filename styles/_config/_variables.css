@@ -6,13 +6,15 @@
   --orange: #cc491a;
   --cream: #ddd6af;
 
+  --orange-hsl: 16, 77%, 45%;
+
   --black-hsl: 0, 0%, 0%;
   --white-hsl: 0, 0%, 100%;
 
   --pageBG: var(--orange);
   --pageText: var(--cream);
 
-  --pageBG-hsl: 16, 77%, 45%;
+  --pageBG-hsl: var(--orange-hsl);
   --pageText-hsl: 2, 92%, 53%;
 }
 

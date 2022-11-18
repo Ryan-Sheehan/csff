@@ -13,7 +13,7 @@
   /* primary style button */
   &.is-primary {
     @apply text-pageText border-pageText;
-    background: hsla(var(--pageBG-hsl), 0.85);
+    background: hsla(var(--pageBG-hsl), 0.9);
   }
 
   /* text-based button */
