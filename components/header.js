@@ -19,6 +19,7 @@ import {
 import Menu from '@components/menu'
 import MegaNavigation from '@components/menu-mega-nav'
 import Icon from '@components/icon'
+import { introAnimDuration } from '@lib/animate'
 
 const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
   // expand our header data
@@ -36,6 +37,7 @@ const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
   const headerRef = useRef()
   const headerRect = useRect(headerRef)
   const router = useRouter()
+  const [isIntro, setIsIntro] = useState(true)
 
   // setup menu toggle event
   const toggleMobileNav = (state) => {
@@ -60,6 +62,12 @@ const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
     onSetup({ height: headerHeight })
   }, [headerHeight])
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsIntro(false)
+    }, introAnimDuration)
+  }, [])
+
   return (
     <>
       <a href="#content" className="skip-link">
@@ -75,17 +83,18 @@ const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
       >
         <div ref={headerRef} className="header--outer">
           <m.div
-            transition={{ duration: 0.8, delay: 3 }}
+            transition={{ duration: 0.8, delay: 2.4 }}
             initial={{
               height: 'calc(100vh + 1px)',
-              background: 'var(--orange)',
             }}
-            animate={{ height: 'auto', background: 'var(--pageBG)' }}
+            animate={{
+              height: 'auto',
+            }}
             className="header--inner"
           >
             <div className="header--content">
               <m.div
-                transition={{ duration: 0.8, delay: 3 }}
+                transition={{ duration: 0.8, delay: 2.4 }}
                 initial={{ scale: 2 }}
                 animate={{ scale: 1 }}
                 className="logo"

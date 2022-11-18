@@ -299,14 +299,6 @@ export const site = `
           }
         },
         {
-          "title": blockTitle3,
-          "menu": blockMenu3->{
-            items[]{
-              ${link}
-            }
-          }
-        },
-        {
           "title": blockTitle4,
           social[]{
             icon,

@@ -76,8 +76,6 @@ const getIcon = (name, color) => {
     case 'Logo':
       return (
         <m.g
-          initial={{ fill: 'var(--cream)' }}
-          animate={{ fill: 'var(--pageText)' }}
           transition={{
             delay: 3,
             duration: 1,
@@ -85,6 +83,7 @@ const getIcon = (name, color) => {
             damping: 40,
             stiffness: 300,
           }}
+          fill={color}
         >
           {logoPaths.map((path, index) => {
             const rotate = Math.floor(Math.random() * 24) - 12

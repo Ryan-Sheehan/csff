@@ -1,21 +1,21 @@
 .cookie-bar {
-  @apply fixed bottom-0 right-0 left-0 z-9 p-0 w-full;
+  @apply fixed bottom-0 right-0 left-0 z-9 p-0 w-full shadow-xl;
 
   &--logo {
-    @apply flex-1 flex md:justify-center fill-pageText;
+    @apply flex-1 flex justify-center fill-pageText;
     svg {
-      @apply w-240 md:w-120;
+      @apply w-300 md:w-120;
     }
   }
   &--content {
-    @apply grid gap-48 sm:flex items-start justify-center items-center p-24 pb-16 sm:p-24 bg-orange text-black border;
+    @apply grid gap-48 sm:flex items-start justify-center items-center p-24 pb-16 sm:p-24 bg-orange text-pageText border border-pageText;
   }
 
   &--message {
     @apply flex-1 sm:pr-32 py-16 sm:text-left;
 
     p {
-      @apply text-18 md:text-18 leading-120;
+      @apply text-18 leading-120;
 
       br {
         @apply hidden sm:block;

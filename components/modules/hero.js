@@ -9,14 +9,14 @@ const Hero = ({ data = {} }) => {
   const { content, bgType, photos, video } = data
 
   const ref = useRef()
-  const inView = useInView(ref)
+  const inView = useInView(ref, { once: true })
 
   return (
     <section ref={ref} className="hero">
       {content && (
         <m.div
-          animate={{ rotate: inView ? 0 : 10 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          animate={{ opacity: inView ? 1 : 0 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
           className="hero--overlay"
         >
           <div className="hero--content">

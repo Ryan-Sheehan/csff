@@ -16,10 +16,6 @@ const Footer = ({ data = {} }) => {
             <div key={key} className="footer--block">
               {block.title && <p className="is-h3">{block.title}</p>}
 
-              {block.menu?.items && (
-                <Menu items={block.menu.items} className="menu-footer" />
-              )}
-
               {block.social && (
                 <div className="menu-social">
                   {block.social.map((link, key) => {
@@ -40,8 +36,11 @@ const Footer = ({ data = {} }) => {
               {/* Put our extras in the last block */}
               {key === 0 && (
                 <div className="footer--extras">
-                  {/* <ThemeSwitch /> */}
-
+                  <ThemeSwitch />
+                </div>
+              )}
+              {key === 1 && (
+                <div className="footer--extras">
                   <div className="footer--disclaimer">
                     <p>
                       &copy; {new Date().getFullYear()}. Knickerbocker +

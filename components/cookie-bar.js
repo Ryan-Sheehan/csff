@@ -9,12 +9,13 @@ import BlockContent from '@components/block-content'
 import CustomLink from '@components/link'
 import Icon from './icon'
 import { useMediaQuery } from 'react-responsive'
+import { introAnimDuration } from '@lib/animate'
 
 const barAnim = {
   show: {
     y: '0%',
     transition: {
-      duration: 0.6,
+      duration: 1.2,
       delay: 0,
       ease: [0.16, 1, 0.3, 1],
     },
@@ -38,7 +39,7 @@ const buttonAnim = {
     top: '3.2rem',
     bottom: 'auto',
     transition: {
-      duration: 0.6,
+      duration: 1.8,
       delay: 0,
       ease: [0.16, 1, 0.3, 1],
     },
@@ -61,10 +62,10 @@ const mobileButtonAnim = {
   },
   show: {
     opacity: 1,
-    top: '40%',
+    top: '12rem',
     bottom: 'auto',
     transition: {
-      duration: 0.6,
+      duration: 1.2,
       delay: 0,
       ease: [0.16, 1, 0.3, 1],
     },
@@ -84,10 +85,11 @@ const AboutPopup = React.memo(({ data = {} }) => {
   const [open, setOpen] = useState(false)
   const togglePopup = () => setOpen(!open)
   const [showActions, setShowActions] = useState(false)
+
   useEffect(() => {
     setTimeout(() => {
       setShowActions(true)
-    }, 3000)
+    }, introAnimDuration)
   }, [])
 
   const isSmall = useMediaQuery({
@@ -112,7 +114,7 @@ const AboutPopup = React.memo(({ data = {} }) => {
           aria-live="polite"
           className="cookie-bar"
         >
-          <div className="cookie-bar--content is-inverted">
+          <div className="cookie-bar--content ">
             <div className="cookie-bar--logo">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

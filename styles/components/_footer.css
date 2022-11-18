@@ -2,7 +2,7 @@
   @apply relative overflow-hidden px-48;
 
   &--grid {
-    @apply grid lg:grid-cols-4 bg-pageText;
+    @apply grid md:grid-cols-3 bg-pageText;
   }
 
   &--block {
@@ -31,10 +31,6 @@
         @apply block w-full h-full;
       }
     }
-  }
-
-  &--extras {
-    @apply mt-auto;
   }
 
   &--disclaimer {

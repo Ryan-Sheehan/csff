@@ -9,7 +9,7 @@
   --black-hsl: 0, 0%, 0%;
   --white-hsl: 0, 0%, 100%;
 
-  --pageBG: #f4f4f0;
+  --pageBG: #ffffff;
   --pageText: #000000;
 
   --pageBG-hsl: 60, 14%, 95%;
@@ -26,7 +26,7 @@
 
 [data-theme='metal'] {
   --pageBG: var(--orange);
-  --pageText: #000000;
+  --pageText: var(--cream);
 
   --pageBG-hsl: 16, 77%, 45%;
   --pageText-hsl: 2, 92%, 53%;

@@ -37,7 +37,7 @@
 
   h2,
   .is-h2 {
-    @apply m-0 text-24 md:text-48 font-normal leading-125;
+    @apply m-0 text-24 font-normal leading-125;
   }
 
   h3,

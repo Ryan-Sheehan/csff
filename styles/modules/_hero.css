@@ -20,12 +20,12 @@
   }
 
   &--overlay {
-    @apply z-2 flex flex-col justify-center pointer-events-none;
+    @apply z-2 pointer-events-none;
     grid-area: 1/-1;
   }
 
   &--content {
-    @apply md:w-full max-w-2xl mx-auto px-32 py-32 text-center text-pageText bg-pageBG border border-pageText;
+    @apply absolute top-32 left-0 mx-32 max-w-2xl p-16 text-center text-pageText bg-pageBG border border-pageText;
     background: hsla(var(--pageBG-hsl), 0.85);
   }
 }
