@@ -12,7 +12,8 @@
 
   /* primary style button */
   &.is-primary {
-    @apply bg-pageBG text-pageText border-pageText;
+    @apply text-pageText border-pageText;
+    background: hsla(var(--pageBG-hsl), 0.85);
   }
 
   /* text-based button */
