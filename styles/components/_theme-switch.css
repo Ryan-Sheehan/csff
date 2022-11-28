@@ -2,7 +2,7 @@
   @apply inline-block my-16;
 
   &--toggle {
-    @apply clean-btn flex items-center p-8 bg-transparent border;
+    @apply clean-btn flex items-center bg-transparent;
   }
 
   &--label {
@@ -10,16 +10,18 @@
   }
 
   .swatch {
-    @apply border;
-
+    @apply transition-opacity duration-300 ease-in-out;
     &::before {
       @apply opacity-0;
+    }
+    &:hover {
+      @apply opacity-70;
     }
   }
 }
 
 .swatch {
-  @apply relative p-0 block  w-20 h-20;
+  @apply relative p-0 block  w-64 h-64;
   background-color: var(--swatchColor);
 
   /* ring */
