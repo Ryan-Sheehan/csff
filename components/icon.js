@@ -71,9 +71,9 @@ const logoPaths = [
   },
 ]
 
-const getIcon = (name, color) => {
+const getIcon = (name, color, animate) => {
   switch (name) {
-    case 'Logo':
+    case 'Canal Street Film Festival Logo':
       return (
         <m.g
           transition={{
@@ -89,7 +89,7 @@ const getIcon = (name, color) => {
             const rotate = Math.floor(Math.random() * 24) - 12
             return (
               <m.path
-                initial={{ scale: 0.5 }}
+                initial={{ scale: animate ? 0.5 : 1 }}
                 animate={{ scale: 1 }}
                 transition={{
                   delay: 0.5 + index * 0.05,
@@ -228,7 +228,14 @@ const getIcon = (name, color) => {
 }
 
 const Icon = (props) => {
-  const { id = '', name, color, viewBox = '0 0 100 100', className } = props
+  const {
+    id = '',
+    name,
+    color,
+    viewBox = '0 0 100 100',
+    className,
+    animate,
+  } = props
 
   return (
     <svg
@@ -241,7 +248,7 @@ const Icon = (props) => {
       <title id={`${name.replace(/\s/g, '').toLowerCase()}-${id}`}>
         {name}
       </title>
-      {getIcon(name, color)}
+      {getIcon(name, color, animate)}
     </svg>
   )
 }

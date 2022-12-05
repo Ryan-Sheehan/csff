@@ -9,7 +9,7 @@
   }
   &--content {
     @apply grid gap-48 sm:flex items-start justify-center items-center p-24 pb-16 sm:p-24 text-pageText border border-pageText;
-    background: hsla(var(--orange-hsl), 0.9);
+    background: hsla(var(--orange-hsl), 0.95);
   }
 
   &--message {

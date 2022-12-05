@@ -30,6 +30,8 @@ const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
     menuMobileSecondary,
   } = data
 
+  const { hasSeenIntroAnimation } = useSiteContext()
+
   // setup states
   const [isMobileNavOpen, setMobileNavOpen] = useState(false)
   const [headerHeight, setHeaderHeight] = useState(null)
@@ -67,6 +69,7 @@ const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
       setIsIntro(false)
     }, introAnimDuration)
   }, [])
+  console.log('hasSeenIntroAnimation', hasSeenIntroAnimation)
 
   return (
     <>
@@ -85,7 +88,7 @@ const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
           <m.div
             transition={{ duration: 0.8, delay: 2.4 }}
             initial={{
-              height: 'calc(100vh + 1px)',
+              height: hasSeenIntroAnimation ? 'auto' : 'calc(100vh + 1px)',
             }}
             animate={{
               height: 'auto',
@@ -95,7 +98,7 @@ const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
             <div className="header--content">
               <m.div
                 transition={{ duration: 0.8, delay: 2.4 }}
-                initial={{ scale: 2 }}
+                initial={{ scale: hasSeenIntroAnimation ? 1 : 2 }}
                 animate={{ scale: 1 }}
                 className="logo"
               >
@@ -105,12 +108,22 @@ const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
                     aria-label="Go Home"
                     onClick={() => window.scrollTo(0, 0)}
                   >
-                    <Icon name="Logo" id="header" viewBox="0 0 980 300" />
+                    <Icon
+                      name="Canal Street Film Festival Logo"
+                      id="header"
+                      viewBox="0 0 980 300"
+                      animate={!hasSeenIntroAnimation}
+                    />
                   </button>
                 ) : (
                   <Link href="/" scroll={false}>
                     <a className="logo--link" aria-label="Go Home">
-                      <Icon name="Logo" id="header" viewBox="0 0 215 150" />
+                      <Icon
+                        name="Canal Street Film Festival Logo"
+                        id="header"
+                        viewBox="0 0 980 300"
+                        animate={!hasSeenIntroAnimation}
+                      />
                     </a>
                   </Link>
                 )}

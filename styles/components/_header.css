@@ -59,7 +59,7 @@ a[href='#content'].skip-link {
 }
 
 .logo {
-@apply flex flex-col relative z-1 m-24 fill-pageText;
+  @apply flex flex-col relative z-1 m-24 fill-pageText;
 
   &--link {
     @apply clean-btn block p-0 bg-transparent;
