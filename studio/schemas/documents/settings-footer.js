@@ -77,7 +77,7 @@ export default {
       title: 'Social Links',
       name: 'social',
       type: 'array',
-      of: [{ type: 'socialLink' }],
+      of: [{ type: 'socialLink' }, { type: 'navPage' }],
       group: 'column4',
     },
   ],

@@ -301,8 +301,14 @@ export const site = `
         {
           "title": blockTitle4,
           social[]{
-            icon,
-            url
+            _type == 'socialLink' => {
+              _type,
+              icon,
+              url,
+            },
+            _type == 'navPage' => {
+              ${link}
+            }
           }
         }
       ]

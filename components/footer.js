@@ -4,6 +4,7 @@ import Newsletter from '@components/newsletter'
 import ThemeSwitch from '@components/theme-switch'
 import Menu from '@components/menu'
 import Icon from '@components/icon'
+import CustomLink from '@components/link'
 
 const Footer = ({ data = {} }) => {
   const { blocks } = data
@@ -19,16 +20,21 @@ const Footer = ({ data = {} }) => {
               {block.social && (
                 <div className="menu-social">
                   {block.social.map((link, key) => {
-                    return (
-                      <a
-                        key={key}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {link.icon}
-                      </a>
-                    )
+                    if (link._type === 'socialLink') {
+                      return (
+                        <a
+                          key={key}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {link.icon}
+                        </a>
+                      )
+                    }
+                    if (link._type === 'navPage') {
+                      return <CustomLink link={link} />
+                    }
                   })}
                 </div>
               )}
