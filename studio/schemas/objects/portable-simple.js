@@ -20,9 +20,7 @@ export default {
             title: 'Link',
             name: 'link',
             type: 'object',
-            blockEditor: {
-              render: Button,
-            },
+            component: Button,
             fields: [
               {
                 title: 'Link Type',

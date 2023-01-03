@@ -1,4 +1,3 @@
-import S from '@sanity/desk-tool/structure-builder'
 
 import {
   Gear,
@@ -12,7 +11,7 @@ import {
   Question,
 } from 'phosphor-react'
 
-export const settingsMenu = S.listItem()
+export const settingsMenu = (S) => S.listItem()
   .title('Settings')
   .child(
     S.list()
