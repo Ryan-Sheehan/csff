@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
-import sanityClient from '../client'
+import sanityClient from 'part:@sanity/base/client'
 
 import defaultResolve, {
   PublishAction,
@@ -126,6 +126,7 @@ export default function resolveDocumentActions(props) {
       DiscardChangesAction,
       DeleteAction,
       ...(canPreview ? [PreviewAction] : []),
+      ...(isProduct ? [ShopifyAction] : []),
     ]
   }
 

@@ -5,7 +5,7 @@ import GoogleSearchResult from './google-search'
 import TwitterCard from './twitter-card'
 import FacebookShare from './facebook-share'
 
-import sanityClient from '../../../client'
+import sanityClient from 'part:@sanity/base/client'
 
 class SeoPreviews extends React.PureComponent {
   static propTypes = {

@@ -7,21 +7,18 @@ export default {
   name: 'horizontalRule',
   type: 'object',
   icon: Minus,
-
   fields: [
     {
       type: 'string',
       name: 'horizontalRule',
-      components: {
-        input: HR,
-      },
-    },
+      inputComponent: HR
+    }
   ],
   preview: {
     prepare() {
       return {
-        title: 'Horizontal Rule',
+        title: 'Horizontal Rule'
       }
-    },
-  },
+    }
+  }
 }

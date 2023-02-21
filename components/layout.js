@@ -6,6 +6,7 @@ import { isBrowser, isMobileSafari, useWindowSize } from '@lib/helpers'
 import { pageTransitionSpeed } from '@lib/animate'
 
 import HeadSEO from '@components/head-seo'
+import CookieBar from '@components/cookie-bar'
 import Header from '@components/header'
 import Footer from '@components/footer'
 
@@ -69,6 +70,7 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
         variants={pageTransitionAnim}
         style={headerHeight ? { '--headerHeight': `${headerHeight}px` } : null}
       >
+        <CookieBar data={site.aboutPopup} />
         <Header
           data={site.header}
           isTransparent={page.hasTransparentHeader}

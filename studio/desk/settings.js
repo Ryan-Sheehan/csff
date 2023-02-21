@@ -1,15 +1,18 @@
+import S from '@sanity/desk-tool/structure-builder'
 
 import {
   Gear,
   PaintBucket,
+  ShoppingCart,
   NavigationArrow,
   AnchorSimple,
+  FlagBanner,
   GlobeSimple,
   Shuffle,
   Question,
 } from 'phosphor-react'
 
-export const settingsMenu = (S) => S.listItem()
+export const settingsMenu = S.listItem()
   .title('Settings')
   .child(
     S.list()
@@ -54,6 +57,15 @@ export const settingsMenu = (S) => S.listItem()
               .documentId('aboutSettings')
           )
           .icon(Question),
+        S.listItem()
+          .title('Promo Bar')
+          .child(
+            S.editor()
+              .id('promoSettings')
+              .schemaType('promoSettings')
+              .documentId('promoSettings')
+          )
+          .icon(FlagBanner),
         S.divider(),
         S.listItem()
           .title('Default SEO / Share')
