@@ -1,6 +1,3 @@
-import createSchema from 'part:@sanity/base/schema-creator'
-import schemaTypes from 'all:part:@sanity/base/schema-type'
-
 // Document types
 import page from './documents/page'
 import section from './documents/section'
@@ -38,55 +35,46 @@ import freeform from './objects/freeform'
 import accordions from './objects/accordions'
 import accordion from './objects/accordion'
 
-import participant from './objects/participant'
-
 /*  ------------------------------------------ */
 /*  Your Schema documents / modules / objects
 /*  ------------------------------------------ */
-export default createSchema({
-  // The name of our schema
-  name: 'content',
+export default [
+  /* ----------------- */
+  /* 1: Document types */
+  page,
+  section,
 
-  types: schemaTypes.concat([
-    /* ----------------- */
-    /* 1: Document types */
-    page,
-    section,
+  generalSettings,
+  headerSettings,
+  footerSettings,
+  seoSettings,
+  aboutSettings,
+  menu,
+  redirect,
 
-    generalSettings,
-    headerSettings,
-    footerSettings,
-    seoSettings,
-    aboutSettings,
-    menu,
-    redirect,
+  /* --------------- */
+  /* 2: Module types */
+  grid,
+  hero,
+  marquee,
+  dividerPhoto,
 
-    /* --------------- */
-    /* 2: Module types */
-    grid,
-    hero,
-    marquee,
-    dividerPhoto,
+  /* ----------------------- */
+  /* 3: Generic Object types */
+  gridColumn,
+  gridSize,
+  seo,
 
-    /* ----------------------- */
-    /* 3: Generic Object types */
-    gridColumn,
-    gridSize,
-    seo,
+  navDropdown,
+  navPage,
+  navLink,
+  socialLink,
+  horizontalRule,
 
-    navDropdown,
-    navPage,
-    navLink,
-    socialLink,
-    horizontalRule,
+  simplePortableText,
+  complexPortableText,
 
-    simplePortableText,
-    complexPortableText,
-
-    freeform,
-    accordions,
-    accordion,
-
-    participant,
-  ]),
-})
+  freeform,
+  accordions,
+  accordion,
+]

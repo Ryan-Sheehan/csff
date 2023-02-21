@@ -1,5 +1,3 @@
-import S from '@sanity/desk-tool/structure-builder'
-
 import { settingsMenu } from './desk/settings'
 import { pagesMenu } from './desk/pages'
 import { menusMenu } from './desk/menus'
@@ -21,15 +19,15 @@ const hiddenDocTypes = (listItem) =>
     'media.tag', // for media plugin
   ].includes(listItem.getId())
 
-export default () =>
+export default (S) =>
   S.list()
     .title('Website')
     .items([
-      pagesMenu,
+      pagesMenu(S),
       S.divider(),
-      menusMenu,
+      menusMenu(S),
       S.divider(),
-      settingsMenu,
+      settingsMenu(S),
 
       // Filter out docs already defined above
       ...S.documentTypeListItems().filter(hiddenDocTypes),

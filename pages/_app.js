@@ -13,11 +13,8 @@ import {
   SiteContextProvider,
   useSiteContext,
   useTogglePageTransition,
-  useToggleHasSeenIntroAnimation,
 } from '@lib/context'
-import { introAnimDuration } from '@lib/animate'
 
-import Cart from '@components/cart'
 import { signature } from '@lib/signature'
 
 if (isBrowser) {
@@ -26,7 +23,6 @@ if (isBrowser) {
 
 const Site = ({ Component, pageProps, router }) => {
   const togglePageTransition = useTogglePageTransition()
-  const toggleHasSeenIntroAnimation = useToggleHasSeenIntroAnimation()
   const { isPageTransition } = useSiteContext()
 
   const { data } = pageProps
@@ -40,12 +36,6 @@ const Site = ({ Component, pageProps, router }) => {
       document.documentElement.classList.toggle('is-loading', isPageTransition)
     }
   }, [isPageTransition])
-
-  useEffect(() => {
-    setTimeout(() => {
-      toggleHasSeenIntroAnimation(true)
-    }, introAnimDuration)
-  }, [])
 
   // Setup page transition loading states
   useEffect(() => {

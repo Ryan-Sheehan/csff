@@ -3,33 +3,28 @@
   --black: #000000;
   --white: #ffffff;
 
-  --orange: #cc491a;
-  --cream: #ddd6af;
-
-  --orange-hsl: 16, 77%, 45%;
-
   --black-hsl: 0, 0%, 0%;
   --white-hsl: 0, 0%, 100%;
 
-  --pageBG: var(--orange);
-  --pageText: var(--cream);
+  --pageBG: var(--white);
+  --pageText: var(--black);
 
-  --pageBG-hsl: var(--orange-hsl);
-  --pageText-hsl: 2, 92%, 53%;
+  --pageBG-hsl: var(--black-hsl);
+  --pageText-hsl: var(--white-hsl);
 }
 
 [data-theme='dark'] {
   --pageBG: #000000;
   --pageText: #f4f4f0;
 
-  --pageBG-hsl: 0, 0%, 0%;
-  --pageText-hsl: 60, 14%, 95%;
+  --pageBG-hsl: var(--black-hsl);
+  --pageText-hsl: var(--white-hsl);
 }
 
 [data-theme='bright'] {
-  --pageBG: #ffffff;
-  --pageText: #000000;
+  --pageBG: var(--white-hsl);
+  --pageText: var(--black-hsl);
 
-  --pageBG-hsl: 60, 14%, 95%;
-  --pageText-hsl: 0, 0%, 0%;
+  --pageBG-hsl: var(--white-hsl);
+  --pageText-hsl: var(--black-hsl);
 }

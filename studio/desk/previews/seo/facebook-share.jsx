@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import imageUrlBuilder from '@sanity/image-url'
-import sanityClient from 'part:@sanity/base/client'
+import sanityClient from '../../../client'
 import { assemblePageUrl, replaceTemplateTags } from '../../../lib/helpers'
 import styles from './seo-preview.css'
 

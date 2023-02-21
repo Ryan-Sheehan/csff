@@ -22,6 +22,7 @@ import Icon from '@components/icon'
 import { introAnimDuration } from '@lib/animate'
 
 const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
+  if (!data) return null
   // expand our header data
   const {
     menuDesktopLeft,
