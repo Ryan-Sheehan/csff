@@ -2,10 +2,8 @@
 import {
   Gear,
   PaintBucket,
-  ShoppingCart,
   NavigationArrow,
   AnchorSimple,
-  FlagBanner,
   GlobeSimple,
   Shuffle,
   Question,
@@ -56,15 +54,6 @@ export const settingsMenu = (S) => S.listItem()
               .documentId('aboutSettings')
           )
           .icon(Question),
-        S.listItem()
-          .title('Promo Bar')
-          .child(
-            S.editor()
-              .id('promoSettings')
-              .schemaType('promoSettings')
-              .documentId('promoSettings')
-          )
-          .icon(FlagBanner),
         S.divider(),
         S.listItem()
           .title('Default SEO / Share')

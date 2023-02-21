@@ -54,70 +54,6 @@ export const ptContent = `
   }
 `
 
-// Construct our "product" GROQ
-export const product = `
-  {
-    "publishDate": coalesce(publishDate, _createdAt),
-    "slug": slug.current,
-    "id": productID,
-    title,
-    price,
-    comparePrice,
-    description[]{
-      ${ptContent}
-    },
-    "photos": {
-      "main": galleryPhotos[]{
-        forOption,
-        photos[]{
-          ${imageMeta}
-        }
-      },
-      "listing": listingPhotos[]{
-        forOption,
-        "default": listingPhoto{
-          ${imageMeta}
-        },
-        "hover": listingPhotoHover{
-          ${imageMeta}
-        }
-      },
-    },
-    inStock,
-    lowStock,
-    useGallery,
-    surfaceOption,
-    options[]{
-      name,
-      position,
-      values[]
-    },
-    optionSettings[]{
-      forOption,
-      "color": color->color,
-    },
-    "variants": *[_type == "productVariant" && productID == ^.productID && wasDeleted != true && isDraft != true]{
-      "id": variantID,
-      title,
-      price,
-      comparePrice,
-      inStock,
-      lowStock,
-      options[]{
-        name,
-        position,
-        value
-      },
-      seo
-    },
-    "klaviyoAccountID": *[_type == "generalSettings"][0].klaviyoAccountID,
-    "filters": filters[]{
-      "slug": filter->slug.current,
-      forOption
-    }
-  }
-`
-
 // Construct our "blocks" GROQ
 export const blocks = `
   _type == 'freeform' => {
@@ -215,34 +151,13 @@ export const site = `
   "site": {
     "title": *[_type == "generalSettings"][0].siteTitle,
     "rootDomain": *[_type == "generalSettings"][0].siteURL,
-    "shop": *[_type == "shopSettings"][0]{
-      storeURL,
-      cartMessage
-    },
-    "productCounts": [ {"slug": "all", "count": count(*[_type == "product"])} ] + *[_type == "collection"]{
-      "slug": slug.current,
-      "count": count(products)
-    },
-    "aboutPopup": *[_type == "aboutSettings"][0]{
-      enabled,
-      message
-    },
     "header": *[_type == "headerSettings"][0]{
-      "promo": *[_type == "promoSettings"][0]{
-        enabled,
-        display,
-        text,
-        "link": link->{
-          ${page}
-        }
-      },
       menuDesktopLeft->{
         items[]{
           ${link},
           dropdownItems[]{
             ${link}
           },
-          featured[]->${product}
         }
       },
       menuDesktopRight->{
@@ -251,7 +166,6 @@ export const site = `
           dropdownItems[]{
             ${link}
           },
-          featured[]->${product}
         }
       },
       menuMobilePrimary->{
@@ -325,9 +239,4 @@ export const site = `
     },
     "gtmID": *[_type == "generalSettings"][0].gtmID,
   }
-`
-
-// All Products
-export const allProducts = `
-  *[_type == "product" && wasDeleted != true && isDraft != true]${product} | order(title asc)
 `

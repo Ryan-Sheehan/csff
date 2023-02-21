@@ -7,7 +7,7 @@ import { Logo } from './branding/Logo'
 
 export default defineConfig({
   title: 'eukaryotic',
-  projectId: 'hsf0v5zr',
+  projectId: '03tujswx',
   dataset: 'production',
   plugins: [deskTool({ structure: deskStructure })],
   schema: {

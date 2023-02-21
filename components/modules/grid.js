@@ -1,7 +1,6 @@
 import React from 'react'
 import cx from 'classnames'
 
-import ProductCard from '@components/product-card'
 import Freeform from '@components/freeform'
 import AccordionList from '@components/accordion-list'
 

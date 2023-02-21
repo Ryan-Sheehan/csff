@@ -35,8 +35,6 @@ import freeform from './objects/freeform'
 import accordions from './objects/accordions'
 import accordion from './objects/accordion'
 
-import participant from './objects/participant'
-
 /*  ------------------------------------------ */
 /*  Your Schema documents / modules / objects
 /*  ------------------------------------------ */
@@ -79,6 +77,4 @@ export default [
   freeform,
   accordions,
   accordion,
-
-  participant,
 ]

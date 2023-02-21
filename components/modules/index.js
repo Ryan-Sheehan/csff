@@ -4,8 +4,6 @@ import Grid from './grid'
 import Hero from './hero'
 import Marquee from './marquee'
 import DividerPhoto from './divider-photo'
-import ProductHero from './product-hero'
-import Collection from './collection-grid'
 
 export const Module = ({
   index,
@@ -14,22 +12,18 @@ export const Module = ({
   activeVariant,
   onVariantChange,
 }) => {
-  const ModuleType = {
-    grid: Grid,
-    hero: Hero,
-    marquee: Marquee,
-    dividerPhoto: DividerPhoto,
-    productHero: ProductHero,
-    collectionGrid: Collection,
-  }[data?._type] ?? <></>
+  if (!data) return null
 
-  return (
-    <ModuleType
-      index={index}
-      data={data}
-      product={product}
-      activeVariant={activeVariant}
-      onVariantChange={onVariantChange}
-    />
-  )
+  switch (data._type) {
+    case 'grid':
+      return <Grid index={index} data={data} />
+    case 'hero':
+      return <Hero index={index} data={data} />
+    case 'marquee':
+      return <Marquee index={index} data={data} />
+    case 'dividerPhoto':
+      return <DividerPhoto index={index} data={data} />
+    default:
+      return null
+  }
 }
