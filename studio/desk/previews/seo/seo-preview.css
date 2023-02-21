@@ -1,3 +1,5 @@
+@import 'part:@sanity/base/theme/variables-style';
+
 .seoItem {
   margin: 0;
 }
@@ -19,6 +21,7 @@
 }
 
 .seoItemCard {
+  composes: root from 'part:@sanity/base/theme/layout/box-style';
   margin: 0 !important;
   min-width: 460px;
   border-radius: var(--border-radius-large);
@@ -35,7 +38,7 @@
 }
 
 .imagePlaceholder::after {
-  content: 'no photo set!';
+  content: "no photo set!";
   display: block;
   position: absolute;
   top: 50%;
@@ -44,6 +47,7 @@
   text-align: center;
   transform: translateY(-50%);
 }
+
 
 /* Google Preview */
 .googleWrapper {
@@ -148,8 +152,7 @@
   border-width: 1px;
   border-style: solid;
   overflow: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
-    Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 .tweetCardContent {

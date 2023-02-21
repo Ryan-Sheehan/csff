@@ -11,7 +11,25 @@ export default {
     { title: 'Browser Icons', name: 'icons' }
   ],
   fields: [
-   
+    {
+      name: 'seoNote',
+      type: 'note',
+      options: {
+        headline: 'Template Tags',
+        message: (
+          <>
+            <span>
+              You can use <code>{`{{ page_title }}`}</code> and{' '}
+              <code>{`{{ site_title }}`}</code> to dynamically display the page
+              title and global site title in the "Meta Title" and "Share Title"
+              fields.
+            </span>
+          </>
+        ),
+        tone: 'primary'
+      },
+      group: ['seo', 'social']
+    },
     {
       title: 'Default Meta Title',
       name: 'metaTitle',

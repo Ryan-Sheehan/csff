@@ -7,9 +7,8 @@ import Icon from '@components/icon'
 import CustomLink from '@components/link'
 
 const Footer = ({ data = {} }) => {
-  if (!data) return null
   const { blocks } = data
-
+  console.log(blocks)
   return (
     <footer className="footer" role="contentinfo">
       <div className="footer--grid">

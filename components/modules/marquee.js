@@ -3,6 +3,7 @@ import { useInView } from 'react-cool-inview'
 import { Marqy } from 'marqy'
 
 import Photo from '@components/photo'
+import ProductCard from '@components/product-card'
 
 const Marquee = ({ data = {} }) => {
   const { items, speed, reverse, pausable } = data
@@ -42,6 +43,19 @@ const Marquee = ({ data = {} }) => {
                       photo={item.photo}
                       hasPlaceholder={false}
                       forceLoad={inView}
+                    />
+                  </div>
+                )
+              case 'product':
+                return (
+                  <div key={key} className="marquee--product">
+                    <ProductCard
+                      key={key}
+                      product={item.product}
+                      hasVisuals
+                      showThumbs
+                      showPrice
+                      showQuickAdd
                     />
                   </div>
                 )

@@ -21,42 +21,58 @@ export default {
         {
           title: 'H1 (use once)',
           value: 'h1',
-          component: Header1,
+          blockEditor: {
+            render: Header1,
+          },
         },
         {
           title: 'H1 (mimic)',
           value: 'h1mock',
-          component: Header1,
+          blockEditor: {
+            render: Header1,
+          },
         },
         {
           title: 'H2',
           value: 'h2',
-          component: Header2,
+          blockEditor: {
+            render: Header2,
+          },
         },
         {
           title: 'H2 (mimic)',
           value: 'h2mock',
-          component: Header2,
+          blockEditor: {
+            render: Header2,
+          },
         },
         {
           title: 'H3',
           value: 'h3',
-          component: Header3,
+          blockEditor: {
+            render: Header3,
+          },
         },
         {
           title: 'H3 (mimic)',
           value: 'h3mock',
-          component: Header3,
+          blockEditor: {
+            render: Header3,
+          },
         },
         {
           title: 'H4',
           value: 'h4',
-          component: Header4,
+          blockEditor: {
+            render: Header4,
+          },
         },
         {
           title: 'H4 (mimic)',
           value: 'h4mock',
-          component: Header4,
+          blockEditor: {
+            render: Header4,
+          },
         },
       ],
       lists: [{ title: 'Bullet', value: 'bullet' }],
@@ -70,8 +86,9 @@ export default {
             title: 'Link',
             name: 'link',
             type: 'object',
-            component: Button,
-
+            blockEditor: {
+              render: Button,
+            },
             fields: [
               {
                 title: 'Link Type',
