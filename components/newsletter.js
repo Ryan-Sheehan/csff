@@ -2,15 +2,24 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { m, AnimatePresence } from 'framer-motion'
 import cx from 'classnames'
+import { useInView } from 'react-cool-inview'
 
 import { fadeAnim } from '@lib/animate'
 
 import BlockContent from '@components/block-content'
 import Icon from '@components/icon'
 
-const Newsletter = ({ data = {} }) => {
+const Newsletter = ({ data = {}, buttonClassname }) => {
   // Extract our module data
-  const { id, klaviyoListID, terms, submit, successMsg, errorMsg } = data
+  const {
+    id = 'newsletter',
+    mailchimpAudienceID = 'd428795118',
+    terms,
+    submit,
+    newsletterMsg,
+    successMsg,
+    errorMsg,
+  } = data
 
   const [submitting, setSubmitting] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -22,6 +31,10 @@ const Newsletter = ({ data = {} }) => {
     reset,
     formState: { errors },
   } = useForm()
+
+  const { observe, inView } = useInView({
+    unobserveOnEnter: true,
+  })
 
   const hasAgreed = watch('acceptTerms')
 
@@ -38,20 +51,21 @@ const Newsletter = ({ data = {} }) => {
   const onSubmit = (data, e) => {
     e.preventDefault()
 
-    // set an error if there's no Klaviyo list supplied...
-    if (!klaviyoListID) setError(true)
+    // set an error if there's no Mailchimp audience supplied...
+    if (!mailchimpAudienceID) setError(true)
 
-    // ...and bail out if terms active and not agreed to (or just Klaviyo list is missing)
-    if ((!hasAgreed && terms && !klaviyoListID) || !klaviyoListID) return
+    // ...and bail out if terms active and not agreed to (or just Mailchimp audience is missing)
+    if ((!hasAgreed && terms && !mailchimpAudienceID) || !mailchimpAudienceID)
+      return
 
     setSubmitting(true)
     setError(false)
 
-    fetch('/api/klaviyo/newsletter-join', {
+    fetch('/api/mailchimp/newsletter-join', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        listID: klaviyoListID,
+        audienceID: mailchimpAudienceID,
         ...data,
       }),
     })
@@ -76,10 +90,11 @@ const Newsletter = ({ data = {} }) => {
   })
 
   return (
-    <form className="form" onSubmit={handleSubmit(onSubmit)}>
+    <form ref={observe} className="form" onSubmit={handleSubmit(onSubmit)}>
       <AnimatePresence mode="wait">
         {!error && !success && (
           <m.div
+            key="form"
             initial="hide"
             animate="show"
             exit="hide"
@@ -127,36 +142,26 @@ const Newsletter = ({ data = {} }) => {
                   </span>
                 )}
               </div>
-
+            </div>
+            <div className="control--submit-group">
               <button
                 type="submit"
-                className={cx('btn is-text', {
-                  'is-loading': submitting,
-                  'is-disabled': terms && !hasAgreed,
-                })}
+                className={cx(
+                  'btn',
+                  {
+                    'is-loading': submitting,
+                    'is-disabled': terms && !hasAgreed,
+                  },
+                  buttonClassname
+                )}
                 disabled={submitting || (terms && !hasAgreed)}
               >
-                {submit ? submit : 'Send'}
+                {submit ? submit : 'Subscribe'}
               </button>
+              {newsletterMsg && (
+                <NewsletterMessage message={newsletterMsg} active={inView} />
+              )}
             </div>
-
-            {terms && (
-              <div className="control">
-                <input
-                  id={`acceptTerms-${id}`}
-                  name="acceptTerms"
-                  type="checkbox"
-                  {...register('acceptTerms')}
-                />
-                <label
-                  htmlFor={`acceptTerms-${id}`}
-                  className="control--label for-checkbox mx-auto sm:mx-0"
-                >
-                  <Icon name="Checkmark" />
-                  {terms && <BlockContent blocks={terms} />}
-                </label>
-              </div>
-            )}
           </m.div>
         )}
 
@@ -171,9 +176,9 @@ const Newsletter = ({ data = {} }) => {
           >
             <div className="form--success-content">
               {successMsg ? (
-                <BlockContent blocks={successMsg} />
+                <BlockContent className="is-small-body" blocks={successMsg} />
               ) : (
-                <h2>Success!</h2>
+                <p>Subscribed</p>
               )}
             </div>
           </m.div>
@@ -189,7 +194,11 @@ const Newsletter = ({ data = {} }) => {
             className="form--error"
           >
             <div className="form--error-content">
-              {errorMsg ? <BlockContent blocks={errorMsg} /> : <h2>Error!</h2>}
+              {errorMsg ? (
+                <BlockContent className="is-small-body" blocks={errorMsg} />
+              ) : (
+                <p>Error!</p>
+              )}
               <p className="form--error-reset">
                 <button className="btn" onClick={(e) => resetForm(e)}>
                   try again
@@ -200,6 +209,42 @@ const Newsletter = ({ data = {} }) => {
         )}
       </AnimatePresence>
     </form>
+  )
+}
+
+const NewsletterMessage = ({ message, active }) => {
+  const variants = {
+    show: {
+      opacity: 1,
+      transition: {
+        duration: 0.2,
+        delay: 1,
+        ease: 'linear',
+      },
+    },
+    hide: {
+      opacity: 0,
+      transition: {
+        duration: 0.2,
+        ease: 'linear',
+      },
+    },
+  }
+  return (
+    <AnimatePresence>
+      {active && (
+        <m.div
+          key="subscribe-message"
+          variants={variants}
+          initial="hide"
+          animate="show"
+          exit="hide"
+          className="message"
+        >
+          <BlockContent className="is-small-body" blocks={message} />
+        </m.div>
+      )}
+    </AnimatePresence>
   )
 }
 

@@ -1,9 +1,11 @@
 .btn {
   /* default style button */
-  @apply clean-btn inline-block relative bg-pageBG px-20 py-9 text-center border font-diatype uppercase font-extrabold text-24 leading-125 transition-colors;
+  @apply clean-btn inline-block relative bg-pageBG px-20 py-9 text-center border font-diatype uppercase font-extrabold text-16 leading-125 transition-colors;
 
   /* default: hover */
-  &:not(.is-primary):not(.is-white):not(.is-text):not(.is-disabled):not(.is-soldout) {
+  &:not(.is-primary):not(.is-white):not(.is-text):not(.is-disabled):not(
+      .is-soldout
+    ) {
     &.is-active,
     &:hover {
       @apply bg-pageText border-pageText text-pageBG;
@@ -70,7 +72,9 @@
     @apply bg-pageText border-pageBG text-pageBG;
 
     /* inverted: hover */
-    &:not(.is-primary):not(.is-white):not(.is-text):not(.is-disabled):not(.is-soldout) {
+    &:not(.is-primary):not(.is-white):not(.is-text):not(.is-disabled):not(
+        .is-soldout
+      ) {
       &.is-active,
       &:hover {
         @apply bg-pageBG border-pageBG text-pageText;

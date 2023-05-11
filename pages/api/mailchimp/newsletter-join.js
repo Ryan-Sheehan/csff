@@ -14,7 +14,7 @@ export default async function send(req, res) {
   const {
     body: { audienceID, email },
   } = req
-
+  console.log('audienceID', audienceID)
   // honeypot
   if (req.body.fullname !== '') {
     console.warn('Stuck in honey 🍯')

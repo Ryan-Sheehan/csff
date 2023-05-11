@@ -173,5 +173,8 @@ export default {
     {
       type: 'horizontalRule',
     },
+    {
+      type: 'newsletter',
+    },
   ],
 }

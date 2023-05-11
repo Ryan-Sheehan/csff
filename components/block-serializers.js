@@ -4,6 +4,7 @@ import cx from 'classnames'
 
 import Photo from '@components/photo'
 import CustomLink from '@components/link'
+import Newsletter from './newsletter'
 
 export const blockSerializers = {
   types: {
@@ -64,6 +65,7 @@ export const blockSerializers = {
       return <Photo photo={node} />
     },
     horizontalRule: () => <hr />,
+    newsletter: () => <Newsletter />,
   },
   marks: {
     link: ({ mark, children }) => {
