@@ -1,5 +1,8 @@
+.orange-transparent {
+  background: hsla(var(--orange-hsl), 0.95);
+}
 .cookie-bar {
-  @apply fixed bottom-0 right-0 left-0 z-9 p-0 w-full shadow-xl;
+  @apply fixed bottom-0 right-0 left-0 z-[90] p-0 w-full shadow-xl;
 
   &--logo {
     @apply flex-1 flex justify-center fill-pageText;
